@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import './App.scss';
+import MyTable from './MyTable/MyTable' 
+import dateGen from './generator/randomDateGen'
+import amountGen from './generator/amountGenerators'
+import strGen from './generator/stringGenerator';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    data: [{
+      date: dateGen(),
+      description: strGen(),
+      amount: amountGen()
+    }]
+};
+  addElemHandler = () => {
+    let entry = { date: dateGen(), description: strGen(), amount: amountGen()};
+    this.setState({data: [...this.state.data, entry]});
+  }
+  render() {
+    return (
+      <div className="App">
+        <h1>Table</h1>
+        <MyTable data={this.state.data} click={this.addElemHandler}/>
+      </div>
+    );
+  }
 }
 
 export default App;
