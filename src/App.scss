@@ -1,4 +1,18 @@
 .App {
+  background-color: #bccad6;
+  min-height: 420px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  font-size: x-small;
+  h1 {
+    padding: 5%;
+  }
+
+}
+
+@media (min-width: 421px) {
+.App {
   text-align: center;
   background-color: #bccad6;
   height: 100%;
@@ -7,5 +21,6 @@
   h1 {
     padding: 15px;
   }
+}
 }
 
